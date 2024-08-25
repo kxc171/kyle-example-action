@@ -1,0 +1,15 @@
+name: kyle-example-action
+description: An example Action
+author: Kyle Colantonio
+
+branding:
+  icon: aperture
+  color: blue
+
+runs:
+  using: composite
+  steps:
+    - name: Get Date & Time
+      shell: bash
+      run: |
+        date -Iseconds
