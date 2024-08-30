@@ -25,4 +25,5 @@ runs:
       shell: bash
       run: |
         DATE_OUTPUT=$(date '${{ inputs.format }}')
+        echo "$DATE_OUTPUT"
         echo "date-output=$DATE_OUTPUT" >> "$GITHUB_OUTPUT"
