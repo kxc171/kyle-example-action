@@ -6,10 +6,23 @@ branding:
   icon: aperture
   color: blue
 
+inputs:
+  format:
+    description: The date format to output in
+    required: false
+    default: "+%Y-%m-%dT%H:%M:%S"
+
+outputs:
+  date:
+    description: The date in the format provided
+    value: ${{ steps.date.outputs.date-output }}
+
 runs:
   using: composite
   steps:
     - name: Get Date & Time
+      id: date
       shell: bash
       run: |
-        date -Iseconds
+        DATE_OUTPUT=$(date '${{ inputs.format }}')
+        echo "date-output=$DATE_OUTPUT" >> "$GITHUB_OUTPUT"
